@@ -5,9 +5,12 @@ import { useState } from "react";
 function Login() {
   const [emailOr, setEmailOr] = useState("");
   const [password, setPassword] = useState("");
+  const [warning, setWarning] = useState("");
 
-  const logInHandler = () => {
-    //login
+  const logInHandler = async (e) => {
+    e.preventDefault();
+    console.log(emailOr, password);
+    setWarning("Wrong credentials!");
   };
 
   return (
@@ -36,6 +39,9 @@ function Login() {
         <div>
           <Link>Forgot password?</Link>
         </div>
+        <span className="warning" style={{ margin: 0 }}>
+          {warning}
+        </span>
         <div>
           <input type="submit" value="Log in" className="sign" />
         </div>

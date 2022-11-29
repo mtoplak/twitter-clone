@@ -1,6 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+const host = require("../constants").host;
 
 function SignUp() {
   const [email, setEmail] = useState("");
@@ -9,10 +12,39 @@ function SignUp() {
   const [lastname, setLastname] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [warning, setWarning] = useState("");
 
-  const signUpHandler = () =>{
-    //signup
-  }
+  const navigate = useNavigate();
+
+  const signUpHandler = async (e) => {
+    console.log(email, name, lastname, password, confirmPassword);
+    e.preventDefault();
+    if (password !== confirmPassword) {
+      setWarning("Passwords do not match!");
+    } else if (password.length < 8) {
+      setWarning("Password should be at least 8 characters long!");
+    } else {
+      const response = await fetch(`${host}/signUp.php`, {
+        method: "POST",
+        body: JSON.stringify({
+          email: email,
+          name: name,
+          lastname: lastname,
+          username: username,
+          password: password,
+        }),
+      });
+
+      if (response.status === 401) {
+        setWarning("This email or username already exists!");
+      } else if (response.status === 200) {
+        navigate("/login");
+      }
+      //console.log(response.json());
+      console.log(response);
+      console.log(response.status);
+    }
+  };
 
   return (
     <div
@@ -22,8 +54,14 @@ function SignUp() {
       <h1>Join Twitter today</h1>
       <div></div>
       <form method="POST" onSubmit={signUpHandler}>
+        {/*action="http://localhost/twitter-clone/server/signUp.php"*/}
         <div>
-          <input placeholder="Name" name="name" className="inputOnLog"></input>
+          <input
+            placeholder="Name"
+            name="name"
+            className="inputOnLog"
+            onChange={(e) => setName(e.target.value)}
+          ></input>
         </div>
         <div>
           <input
@@ -67,6 +105,9 @@ function SignUp() {
             onChange={(e) => setConfirmPassword(e.target.value)}
           ></input>
         </div>
+        <span className="warning" style={{ margin: 0 }}>
+          {warning}
+        </span>
         <div>
           <input type="submit" value="Sign up" className="sign" />
         </div>

@@ -454,3 +454,11 @@ button {
   margin: 10px 0 10px 0;
   font-weight: bold;
 }
+
+.warning {
+  color: red;
+  font-size: small;
+  margin: 15px 0 15px;
+  display: inline-block;
+  font-weight: bold;
+}

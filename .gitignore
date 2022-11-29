@@ -1,1 +1,3 @@
 server/config.php
+**/node_modules
+**/.env

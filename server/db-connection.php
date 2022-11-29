@@ -5,7 +5,8 @@ include "./config.php";
 
 
 header('Access-Control-Allow-Origin: *');
-
+header('Access-Control-Allow-Method: POST');
+//header('Content-Type: application/json');
 
 // USTVARJANJE POVEZAVE NA PODATKOVNO BAZO
 try {
