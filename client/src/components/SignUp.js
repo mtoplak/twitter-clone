@@ -17,10 +17,14 @@ function SignUp() {
   const navigate = useNavigate();
 
   const signUpHandler = async (e) => {
-    console.log(email, name, lastname, password, confirmPassword);
+    console.log(username, email, name, lastname, password, confirmPassword);
+    let regexPattern = /[@!#$%]/;
     e.preventDefault();
     if (password !== confirmPassword) {
       setWarning("Passwords do not match!");
+    } else if (regexPattern.test(username)) {
+      //outputs true, v primeru, da vsebuje special character, drugače false
+      setWarning("Username cannot contain special charaters!");
     } else if (password.length < 8) {
       setWarning("Password should be at least 8 characters long!");
     } else {

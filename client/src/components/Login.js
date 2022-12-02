@@ -1,16 +1,38 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+const host = require("../constants").host;
 
 function Login() {
   const [emailOr, setEmailOr] = useState("");
   const [password, setPassword] = useState("");
   const [warning, setWarning] = useState("");
 
+  const navigate = useNavigate();
+
   const logInHandler = async (e) => {
     e.preventDefault();
     console.log(emailOr, password);
-    setWarning("Wrong credentials!");
+    const response = await fetch(`${host}/login.php`, {
+      method: "POST",
+      body: JSON.stringify({
+        emailOrPassword: emailOr,
+        password: password,
+      }),
+    });
+    if (response.status === 401) {
+      console.log("wrong password or email");
+      setWarning("Wrong credentials!");
+    } else if (response.status === 200) {
+      const token = await response.json();
+      console.log(response);
+      console.log(token);
+      console.log(token.token);
+      localStorage.setItem("token", token.token);
+      navigate("/");
+    }
   };
 
   return (

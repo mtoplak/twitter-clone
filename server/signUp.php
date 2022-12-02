@@ -6,7 +6,7 @@ include "./db-connection.php";
 $data = json_decode(file_get_contents('php://input'), true);
 echo print_r($data);
 /*
-//echo $data;
+echo $data;
 var_dump($data);
 echo '<br />';
 echo $data['password'];
