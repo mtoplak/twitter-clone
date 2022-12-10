@@ -1,6 +1,24 @@
 import React from "react";
+import pfp from "../assets/pfp.png";
+import { useState } from "react";
+
+const host = require("../constants").host;
 
 function Feed() {
+  const [content, setContent] = useState("");
+
+  const tweet = async (e) => {
+    e.preventDefault();
+    const response = await fetch(`${host}/tweet.php`, {
+      method: "POST",
+      body: JSON.stringify({
+        token: localStorage.getItem("token"),
+        content: content,
+      }),
+    });
+    console.log(response);
+  };
+
   return (
     <div className="feed">
       <div className="feed__header">
@@ -11,13 +29,14 @@ function Feed() {
       </div>
 
       <div className="tweetBox">
-        <form>
+        <form method="POST" onSubmit={tweet}>
           <div className="tweetbox__input">
-            <img
-              src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
-              alt=""
+            <img src={pfp} alt="" />
+            <input
+              type="text"
+              placeholder="What's Happening?"
+              onChange={(e) => setContent(e.target.value)}
             />
-            <input type="text" placeholder="What's Happening?" />
           </div>
           <div className="tweetbox__upload">
             <div className="upload__icons">
@@ -33,7 +52,14 @@ function Feed() {
             </div>
 
             <div className="tweetButton">
-              <button className="tweetBox__tweetButton">Tweet</button>
+              <button
+                type="submit"
+                className="tweetBox__tweetButton"
+                value="Tweet"
+              >
+                {" "}
+                Tweet{" "}
+              </button>
             </div>
           </div>
         </form>
@@ -45,10 +71,7 @@ function Feed() {
 
       <div className="post">
         <div className="post__avatar">
-          <img
-            src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
-            alt=""
-          />
+          <img src={pfp} alt="" />
         </div>
 
         <div className="post__body">
@@ -86,10 +109,7 @@ function Feed() {
 
       <div className="post">
         <div className="post__avatar">
-          <img
-            src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
-            alt=""
-          />
+          <img src={pfp} alt="" />
         </div>
 
         <div className="post__body">
@@ -124,10 +144,7 @@ function Feed() {
 
       <div className="post">
         <div className="post__avatar">
-          <img
-            src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
-            alt=""
-          />
+          <img src={pfp} alt="" />
         </div>
 
         <div className="post__body">

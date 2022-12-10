@@ -1,4 +1,5 @@
 import React from "react";
+import pfp from "../assets/pfp.png";
 
 function Tweet(props) {
   let tweet = props.tweet;
@@ -6,7 +7,7 @@ function Tweet(props) {
     <div className="post">
       <div className="post__avatar">
         <img
-          src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
+          src={pfp}
           alt=""
         />
       </div>

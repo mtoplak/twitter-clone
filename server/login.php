@@ -75,6 +75,8 @@ try {
         $jwt = JWT::encode($payload, $secret_key, 'HS256');
         $token = json_encode([
             'token' => $jwt,
+            'name' => $rezultat['name'],
+            'username' => $rezultat['username'],
         ]);
         header('Content-type: application/json');
         echo $token;
