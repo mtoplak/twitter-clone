@@ -21,6 +21,7 @@ function App() {
       >
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/twitter-clone" element={<HomePage />} />
           <Route path="/:profile" element={<MyProfile />} />
           <Route path="/explore" element={<Explore />} />
           <Route path="/login" element={<Login />} />
