@@ -64,7 +64,7 @@ function Sidebar() {
 
         <div className="sidebarOption">
           <span className="material-symbols-outlined">person</span>
-          <Link to={"/:profile"} className="styledLink">
+          <Link to={"/"+username} className="styledLink">
             <h2>Profile</h2>
           </Link>
         </div>

@@ -54,6 +54,8 @@ function Explore() {
     fetchData();
   }, []);
 
+  document.title = "Explore";
+
   return (
     <div style={{ display: "flex" }}>
       <Sidebar />

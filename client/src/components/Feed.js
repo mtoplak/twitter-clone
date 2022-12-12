@@ -88,11 +88,11 @@ function Feed() {
               </h3>
             </div>
             <div className="post__headerDescription">
-              <p>posting some memes</p>
+              <p>elon musk fired twitter employees</p>
             </div>
           </div>
           <img
-            src="https://assets.entrepreneur.com/content/3x2/2000/20180703190744-rollsafe-meme.jpeg?crop=16:9"
+            src="https://techcrunch.com/wp-content/uploads/2022/10/elon-musk-buys-twitter-GettyImages-1238367009.jpg"
             alt=""
           />
 
@@ -161,11 +161,11 @@ function Feed() {
               </h3>
             </div>
             <div className="post__headerDescription">
-              <p>elon musk fired twitter employees</p>
+              <p>posting some memes</p>
             </div>
           </div>
           <img
-            src="https://techcrunch.com/wp-content/uploads/2022/10/elon-musk-buys-twitter-GettyImages-1238367009.jpg"
+            src="https://hips.hearstapps.com/hmg-prod/images/2s9cjb-1548710537.jpg?crop=0.9333333333333333xw:1xh;center,top&resize=1200:*"
             alt=""
           />
 

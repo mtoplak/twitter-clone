@@ -46,6 +46,8 @@ function HomePage() {
     }
   }, [token, navigate, auth]);
 
+  document.title = "Home / Twitter";
+
   return (
     <div style={{ display: "flex" }}>
       <Sidebar />
