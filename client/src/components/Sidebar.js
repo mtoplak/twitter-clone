@@ -5,16 +5,21 @@ import { UserContext } from "../context/UserContext";
 import { useNavigate } from "react-router-dom";
 import pfp from "../assets/pfp.png";
 
-
 function Sidebar() {
   const { token, isLoggedIn } = useContext(UserContext);
   console.log(token);
   console.log(isLoggedIn);
   const navigate = useNavigate();
 
-  const [name] = useState(JSON.parse(localStorage.getItem("user")).name || "");
+  const [name] = useState(
+    JSON.parse(localStorage.getItem("user"))
+      ? JSON.parse(localStorage.getItem("user")).name
+      : ""
+  );
   const [username] = useState(
-    JSON.parse(localStorage.getItem("user")).username || ""
+    JSON.parse(localStorage.getItem("user"))
+      ? JSON.parse(localStorage.getItem("user")).username
+      : ""
   );
 
   const navigateToSettings = () => {
@@ -64,7 +69,7 @@ function Sidebar() {
 
         <div className="sidebarOption">
           <span className="material-symbols-outlined">person</span>
-          <Link to={"/"+username} className="styledLink">
+          <Link to={"/" + username} className="styledLink">
             <h2>Profile</h2>
           </Link>
         </div>
@@ -78,7 +83,7 @@ function Sidebar() {
         <div>
           <div className="tweetbox__input">
             <Link to={`/${username}`}>
-              <img src={pfp} alt="pfp" />
+              <img src={pfp} alt="pfp" style={{ float: "left" }} />
               <div
                 style={{
                   marginLeft: "15px",

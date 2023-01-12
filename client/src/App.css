@@ -133,12 +133,12 @@ body {
 .tweetbox__input img {
   border-radius: 50%;
   height: 40px;
+  font-size: 10px;
 }
 
 .tweetBox {
   padding-bottom: 10px;
   border-bottom: 1px solid grey;
-  padding-right: 10px;
 }
 
 .tweetBox form {
@@ -466,11 +466,15 @@ button {
 .name {
   color: #e6ecf0;
   font-weight: bold;
-  font-size: medium;
+  font-size: 14px;
+  margin-top: -40px;
+  margin-left: 15px;
 }
 
 .username {
   color: #4b5055;
+  font-size: 14px;
+  margin-left: 10px;
 }
 
 .save{
